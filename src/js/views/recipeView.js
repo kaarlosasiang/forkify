@@ -1,19 +1,19 @@
-import icons from 'url:../../img/icons.svg';
-import { Fraction } from 'fractional';
+import icons from "url:../../img/icons.svg";
+import { Fraction } from "fractional";
 
 class RecipeView {
-  #parentElement = document.querySelector('.recipe');
+  #parentElement = document.querySelector(".recipe");
   #data;
 
   render(data) {
     this.#data = data;
     const markup = this.#generateMarkup();
     this.#clear();
-    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+    this.#parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
   #clear() {
-    this.#parentElement.innerHTML = '';
+    this.#parentElement.innerHTML = "";
   }
 
   renderSpinner = function () {
@@ -25,8 +25,12 @@ class RecipeView {
         </div> 
     `;
     this.#clear();
-    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+    this.#parentElement.insertAdjacentHTML("afterbegin", markup);
   };
+
+  addHandlerRender(handler) {
+    ["hashchange", "load"].forEach((e) => window.addEventListener(e, handler));
+  }
 
   #generateMarkup() {
     return `
@@ -87,7 +91,7 @@ class RecipeView {
     <div class="recipe__ingredients">
         <h2 class="heading--2">Recipe ingredients</h2>
         <ul class="recipe__ingredient-list">
-        ${this.#data.ingredients.map(this.#generateMarkupIngredient).join('')} 
+        ${this.#data.ingredients.map(this.#generateMarkupIngredient).join("")} 
         
 
         <li class="recipe__ingredient">
@@ -133,7 +137,7 @@ class RecipeView {
                 <use href="${icons}#icon-check"></use>
             </svg>
             <div class="recipe__quantity">${
-              ing.quantity ? new Fraction(ing.quantity).toString() : ''
+              ing.quantity ? new Fraction(ing.quantity).toString() : ""
             }</div>
             <div class="recipe__description">
                 <span class="recipe__unit">${ing.unit}</span>
