@@ -123,7 +123,7 @@ class RecipeView {
         </svg>
         </a>
     </div>
-`;
+    `;
   }
 
   #generateMarkupIngredient(ing) {
@@ -133,7 +133,7 @@ class RecipeView {
                 <use href="${icons}#icon-check"></use>
             </svg>
             <div class="recipe__quantity">${
-            ing.quantity ? new Fraction(ing.quantity).toString() : ''
+              ing.quantity ? new Fraction(ing.quantity).toString() : ''
             }</div>
             <div class="recipe__description">
                 <span class="recipe__unit">${ing.unit}</span>

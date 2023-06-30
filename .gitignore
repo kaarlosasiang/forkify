@@ -1,3 +1,4 @@
 /.parcel-cache
 /.prettierrc
 /dist
+/node_modules
