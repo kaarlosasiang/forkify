@@ -4,7 +4,8 @@
   "description": "Recipe Application",
   "source": "index.html",
   "scripts": {
-    "start": "parcel"
+    "start": "parcel",
+    "build": "parcel build"
   },
   "author": "Kaarlo Sasiang",
   "license": "ISC",
@@ -15,7 +16,7 @@
   },
   "dependencies": {
     "core-js": "^3.31.0",
-    "fractional": "^1.0.0",
+    "fraction.js": "^4.2.0",
     "regenerator-runtime": "^0.13.11"
   }
 }

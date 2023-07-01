@@ -1,21 +1,21 @@
-import icons from "url:../../img/icons.svg";
-import { Fraction } from "fractional";
+import icons from 'url:../../img/icons.svg';
+import Fraction from 'fraction.js';
 
 class RecipeView {
-  #parentElement = document.querySelector(".recipe");
+  #parentElement = document.querySelector('.recipe');
   #data;
-  #errorMessage = "Recipe does not exist. Please try another one!";
-  #message = "";
+  #errorMessage = 'Recipe does not exist. Please try another one!';
+  #message = '';
 
   render(data) {
     this.#data = data;
     const markup = this.#generateMarkup();
     this.#clear();
-    this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
   #clear() {
-    this.#parentElement.innerHTML = "";
+    this.#parentElement.innerHTML = '';
   }
 
   renderSpinner() {
@@ -27,7 +27,7 @@ class RecipeView {
         </div> 
     `;
     this.#clear();
-    this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
   renderError(message = this.#errorMessage) {
@@ -43,7 +43,7 @@ class RecipeView {
     `;
 
     this.#clear();
-    this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
   renderMessage(message = this.#message) {
@@ -59,11 +59,11 @@ class RecipeView {
     `;
 
     this.#clear();
-    this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
   addHandlerRender(handler) {
-    ["hashchange", "load"].forEach((e) => window.addEventListener(e, handler));
+    ['hashchange', 'load'].forEach(e => window.addEventListener(e, handler));
   }
 
   #generateMarkup() {
@@ -125,7 +125,7 @@ class RecipeView {
     <div class="recipe__ingredients">
         <h2 class="heading--2">Recipe ingredients</h2>
         <ul class="recipe__ingredient-list">
-        ${this.#data.ingredients.map(this.#generateMarkupIngredient).join("")} 
+        ${this.#data.ingredients.map(this.#generateMarkupIngredient).join('')} 
         
 
         <li class="recipe__ingredient">
@@ -171,7 +171,7 @@ class RecipeView {
                 <use href="${icons}#icon-check"></use>
             </svg>
             <div class="recipe__quantity">${
-              ing.quantity ? new Fraction(ing.quantity).toString() : ""
+              ing.quantity ? new Fraction(ing.quantity).toFraction(true) : ''
             }</div>
             <div class="recipe__description">
                 <span class="recipe__unit">${ing.unit}</span>
